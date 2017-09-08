@@ -92,11 +92,11 @@ public class coedeMain {
 //		 textMessage.setJMSExpiration(2 * 1000);// message expiration
 		 
 		 RMQDestination rmqDestination = new RMQDestination();
-		 rmqDestination.setDestinationName("ian");
+//		 rmqDestination.setDestinationName("ian");
 		 rmqDestination.setAmqpExchangeName("datas");
 		 rmqDestination.setAmqpRoutingKey("ian");
 		 rmqDestination.setAmqpQueueName("ian");
-		 
+		 rmqDestination.setAmqp(true);
 		 
 //		 destinationName - 隊列目標的名稱
 //		 amqpExchangeName - 映射資源的交換名稱
@@ -111,13 +111,13 @@ public class coedeMain {
 		
 		 /* Create sender queue */
 		 QueueSender queueSender =
-		 queueSession.createSender(queueSession.createQueue("KevinReceive"));
+		 queueSession.createSender(queueSession.createQueue("ian"));
 		 queueSender.setTimeToLive(2 * 1000);
 		 queueSender.send(textMessage);
 		 
-		 MessageProducer producer = queueSession.createProducer(rmqDestination);
-			producer.send(textMessage);
-			
+//		 MessageProducer producer = queueSession.createProducer(rmqDestination);
+//			producer.send(textMessage);
+//			
 		 /* After sending a message we get message id */
 		 System.out.println("after sending a message we get message id " + textMessage.getJMSMessageID());
 //		 String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
